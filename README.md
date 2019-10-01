@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/spacetelescope/jwcf.svg?branch=master)](https://travis-ci.org/spacetelescope/jwcf)
+[![Build Status](https://travis-ci.org/spacetelescope/jwst-calibration-field.svg?branch=master)](https://travis-ci.org/spacetelescope/jwst-calibration-field)
 [![Documentation Status](https://readthedocs.org/projects/jwcf/badge/?version=latest)](https://jwcf.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/jwcf.svg)](https://badge.fury.io/py/jwcf)
 [![PyPI - License](https://img.shields.io/pypi/l/Django.svg)](https://github.com/spacetelescope/jwcf/blob/master/LICENSE.md)
