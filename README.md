@@ -8,6 +8,13 @@
 Python interface to the JWST calibration field catalogs.
 
 
+### Example usage
+Access HAWK-I based catalog:        
+````
+    from jwcf import hawki 
+    catalog = hawki.hawki_catalog() 
+````    
+
 ### Documentation
 
 
