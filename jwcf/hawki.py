@@ -4,62 +4,42 @@ Author:
 -------
     Johannes Sahlmann
 
-References
-----------
-    Some code was taken from https://github.com/spacetelescope/mirage
-
 
 """
 
 import os
-import requests
 import tarfile
 
 from astropy.table import Table
 
+from .utils import download_file
+
 local_dir = os.path.dirname(os.path.abspath(__file__))
 
-
-
-def download_file(url, file_name, output_directory='./'):
-    """Download into the current working directory the
-    file from Box given the direct URL
-    Parameters
-    ----------
-    url : str
-        URL to the file to be downloaded
-    Returns
-    -------
-    download_filename : str
-        Name of the downloaded file
-    """
-    download_filename = os.path.join(output_directory, file_name)
-    if not os.path.isfile(download_filename):
-        print('Downloading: {}'.format(file_name))
-        with requests.get(url, stream=True) as response:
-            if response.status_code != 200:
-                raise RuntimeError("Wrong URL - {}".format(url))
-            with open(download_filename, 'wb') as f:
-                for chunk in response.iter_content(chunk_size=2048):
-                    if chunk:
-                        f.write(chunk)
-    return download_filename
-
-
-
-
 hawki_catalog_jwstmags_catalog_name = 'lmc_calibration_field_hawki_gaiadr2_jwstmags'
-hawki_catalog_jwstmags_url = ('https://stsci.box.com/shared/static/0yjynlqe5kfzxr6o0b3wlji7hgwv3m75.gz', '{}.tar.gz'.format(hawki_catalog_jwstmags_catalog_name))
-
-
+hawki_catalog_jwstmags_url = ('https://stsci.box.com/shared/static/'
+                              '0yjynlqe5kfzxr6o0b3wlji7hgwv3m75.gz',
+                              '{}.tar.gz'.format(hawki_catalog_jwstmags_catalog_name))
 
 def hawki_catalog(include_jwstmags=True):
-    """Return astropy table containing the HAWK-I catalog."""
+    """Return astropy table containing the HAWK-I catalog.
 
+    Parameters
+    ----------
+    include_jwstmags : bool
+        Whether to include the version of the catalog with JWST magnitudes.
+
+    Returns
+    -------
+     : astropy.table.Table
+        Catalog in table format
+
+    """
     catalog_dir = os.path.join(local_dir, 'catalogs')
 
     if include_jwstmags:
-        hawki_catalog_jwstmags_file = os.path.join(catalog_dir, '{}.fits'.format(hawki_catalog_jwstmags_catalog_name))
+        hawki_catalog_jwstmags_file = os.path.join(catalog_dir, '{}.fits'.format(
+            hawki_catalog_jwstmags_catalog_name))
 
         if os.path.isfile(hawki_catalog_jwstmags_file) is False:
             if os.path.isdir(catalog_dir) is False:
@@ -76,4 +56,5 @@ def hawki_catalog(include_jwstmags=True):
             return Table.read(hawki_catalog_jwstmags_file)
         else:
             return Table.read(hawki_catalog_jwstmags_file)
-
+    else:
+        raise NotImplementedError
