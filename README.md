@@ -15,6 +15,12 @@ Access HAWK-I based catalog:
     catalog = hawki.hawki_catalog() 
 ````    
 
+Access HST based catalog:
+````
+    from jwcf import hst
+    catalog = hst.hst_catalog(decimal_year_of_observation=2022.50)
+````
+
 ### Documentation
 
 
