@@ -20,6 +20,7 @@ Access HST based catalog:
     from jwcf import hst
     catalog = hst.hst_catalog(decimal_year_of_observation=2022.50)
 ````
+`decimal_year_of_observation` is the 
 
 ### Documentation
 
