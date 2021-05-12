@@ -20,7 +20,7 @@ Access HST based catalog:
     from jwcf import hst
     catalog = hst.hst_catalog(decimal_year_of_observation=2022.50)
 ````
-`decimal_year_of_observation` is the 
+`decimal_year_of_observation` above provides the RA, Dec locations at the desired epoch. These locations are projected based on accurate HST proper motions derived using dual-epoch data obtained in 2006.39 and 2017.38. If `decimal_year_of_observation` is not provided, the output catalog will default to 2017.38 positions.
 
 ### Documentation
 
