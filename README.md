@@ -5,8 +5,7 @@
 
 # jwcf  -  JWST calibration field catalogs
 
-Python interface to the JWST calibration field catalogs.
-
+Python interface to the HAWK-I and HST-based JWST calibration field catalogs. Both of these catalogs have RA, Dec positions as well as estimated magnitudes for most JWST instruments+filters.
 
 ### Example usage
 Access HAWK-I based catalog:        
