@@ -22,6 +22,9 @@ Access HST based catalog:
 ````
 `decimal_year_of_observation` above provides the RA, Dec locations at the desired epoch. These locations are projected based on accurate HST proper motions derived using dual-epoch data obtained in 2006.39 and 2017.38. If `decimal_year_of_observation` is not provided, the output catalog will default to 2017.38 positions.
 
+The resulting `catalog` above is an astropy table (class). Available columns can be accessed by `catalog.colnames`. To extract a specific column: e.g., `catalog['ra_deg']` as a table column or `catalog['ra_deg'].data` as a (masked) array.
+
+
 ### Documentation
 
 
