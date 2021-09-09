@@ -27,6 +27,8 @@ The resulting `catalog` above is an astropy table (class). Available columns can
 ### Documentation
 
 
+Anderson, J., Fall, M., and the Astrometry Working Group, The JWST Calibration Field: Absolute Astrometry and Proper Motions with GAIA and a Second HST Epoch, Technical Report JWST-STScI-007716, STScI
+
 Sahlmann, J., 2019, Astrometric catalog for JWST focal plane geometric calibration, Technical Report JWST-STScI-006828 STScI 
 
 Sahlmann, J., 2017, Astrometric accuracy of the JWST calibration field astrometric catalog examined with the first Gaia data release, Technical Report JWST-STScI-005492, STScI
