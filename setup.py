@@ -6,6 +6,7 @@ import os
 import sys
 
 from configparser import ConfigParser
+# from setuptools_scm import get_version
 
 # Get some values from the setup.cfg
 conf = ConfigParser()
@@ -70,6 +71,7 @@ builtins._ASTROPY_PACKAGE_NAME_ = PACKAGENAME
 
 # VERSION should be PEP440 compatible (http://www.python.org/dev/peps/pep-0440)
 VERSION = metadata.get('version', '0.0.dev')
+# VERSION = get_version
 
 # Indicates if this version is a release version
 RELEASE = 'dev' not in VERSION
@@ -130,6 +132,7 @@ setup(name=PACKAGENAME,
       description=DESCRIPTION,
       scripts=scripts,
       install_requires=[s.strip() for s in metadata.get('install_requires', 'astropy').split(',')],
+      use_scm_version=True,
       author=AUTHOR,
       author_email=AUTHOR_EMAIL,
       license=LICENSE,
