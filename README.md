@@ -13,8 +13,9 @@ pip install jwst-calibration-field
 Or edtiable install:
 
 ```bash
+git lfs install # This is required for the large catalog files to be downloaded along with the package
 git clone https://github.com/spacetelescope/jwst-calibration-field
-cd jwst-calibration-field
+cd just-calibration-field
 pip install -e .
 ```
 Requires Python ≥ 3.8, `numpy`, `astropy`
