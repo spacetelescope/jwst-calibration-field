@@ -1,31 +1,50 @@
 [![Build Status](https://travis-ci.org/spacetelescope/jwst-calibration-field.svg?branch=master)](https://travis-ci.org/spacetelescope/jwst-calibration-field)
-[![Documentation Status](https://readthedocs.org/projects/jwst-calibration-field/badge/?version=latest)](https://jwst-calibration-field.readthedocs.io/en/latest/?badge=latest)
-[![PyPI version](https://badge.fury.io/py/jwcf.svg)](https://badge.fury.io/py/jwcf)
-[![PyPI - License](https://img.shields.io/pypi/l/Django.svg)](https://github.com/spacetelescope/jwcf/blob/master/LICENSE.md)
 
 # jwcf  -  JWST calibration field catalogs
 
-Python interface to the HAWK-I and HST-based JWST calibration field catalogs. Both of these catalogs have RA, Dec positions as well as estimated magnitudes for most JWST instruments+filters.
+Python interface to the HAWK-I and HST-based JWST calibration field catalogs. Both catalogs provide RA, Dec positions as well as estimated magnitudes for most JWST instruments + filters. Catalogs are bundled with the package as compressed FITS files (Astropy reads `.fits.gz` transparently).
 
-### Example usage
-Access HAWK-I based catalog:        
-````
-    from jwcf import hawki 
-    catalog = hawki.hawki_catalog() 
-````    
+## Installation
 
-Access HST based catalog:
-````
-    from jwcf import hst
-    catalog = hst.hst_catalog(decimal_year_of_observation=2022.50)
-````
-`decimal_year_of_observation` above provides the RA, Dec locations at the desired epoch. These locations are projected based on accurate HST proper motions derived using dual-epoch data obtained in 2006.39 and 2017.38. If `decimal_year_of_observation` is not provided, the output catalog will default to 2017.38 positions.
+```bash
+pip install jwst-calibration-field
+```
 
-The resulting `catalog` above is an astropy table (class). Available columns can be accessed by `catalog.colnames`. To extract a specific column: e.g., `catalog['ra_deg']` as a table column or `catalog['ra_deg'].data` as a (masked) array.
+Or edtiable install:
 
+```bash
+git clone https://github.com/spacetelescope/jwst-calibration-field
+cd jwst-calibration-field
+pip install -e .
+```
+Requires Python ≥ 3.8, `numpy`, `astropy`
 
-### Documentation
+## Example usage
+HAWK-I catalog:
+```python
+from jwcf import hawki_catalog
 
+catalog = hawki_catalog()
+print(catalog.colnames)
+```    
+
+HST catalog:
+```python
+from jwcf import hst_catalog
+
+# Default: 2017.38 epoch
+catalog = hst_catalog()
+
+# Any epoch (proper motions propagated from 2017.38 reference)
+catalog = hst_catalog(decimal_year_of_observation=2026.0)
+```
+The result is an `astropy.table.Table`. Access columns via `catalog['ra_deg']` (column) or `catalog['radeg'].data` (array).
+
+## Catalog details
+- **HAWK-I**: LMC calibration field calibrated to Gaia DR2 reference
+- **HST**: Dual-epoch (2006.39 + 2017.38) proper motions; positions propagated to any epoch. Gaia DR2 reference.
+
+## References
 
 Anderson, J., Fall, M., and the Astrometry Working Group, The JWST Calibration Field: Absolute Astrometry and Proper Motions with GAIA and a Second HST Epoch, Technical Report JWST-STScI-007716, STScI
 
@@ -34,11 +53,8 @@ Sahlmann, J., 2019, Astrometric catalog for JWST focal plane geometric calibrati
 Sahlmann, J., 2017, Astrometric accuracy of the JWST calibration field astrometric catalog examined with the first Gaia data release, Technical Report JWST-STScI-005492, STScI
 
 
-### Contributing
-Please open a new issue or new pull request for bugs, feedback, or new features you would like to see. If there is an issue you would like to work on, please leave a comment and we will be happy to assist. New contributions and contributors are very welcome!   
+## Contributing
+Open issues or PRs for bugs, feedback, or features. New contributors welcome!
  
-
-### References
-
-
-
+## Licenses
+BSD-3-Clause

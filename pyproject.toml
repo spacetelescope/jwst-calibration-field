@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jwst-calibration-field"
+version = "1.0.0"
+description = "Python interface to the HAWK-I and HST-based JWST calibration field catalogs."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "BSD-3-Clause" }
+authors = [
+  { name = "Space Telescope Science Institute" },
+  { name = "Tony Sohn" }
+]
+dependencies = [ "numpy", "astropy" ]
+
+[project.urls]
+Homepage = "https://github.com/spacetelescope/jwst-calibration-field"
+Source = "https://github.com/spacetelescope/jwst-calibration-field"
+Issues = "https://github.com/spacetelescope/jwst-calibration-field/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"jwcf" = ["data/*.fits.gz"]
